@@ -30,7 +30,6 @@ require_once 'Zend/Controller/Plugin/Abstract.php';
  * @author Michiel Staessen <mf@michielstaessen.be>
  * @copyright Copyright (c) 2010 Michiel Staessen (http://www.michielstaessen.be/mf)
  * @license http://creativecommons.org/licenses/by-sa/3.0/ Creative Commons, Share alike
- * @link http://developers.facebook.com/docs/authentication/#authenticating-users-in-a-web-application
  * 
  */
 class Mist_Controller_Plugin_ModularLayout extends Zend_Controller_Plugin_Abstract
