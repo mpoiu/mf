@@ -22,6 +22,11 @@
 require_once 'Zend/Auth/Adapter/Interface.php';
 
 /**
+ * @see Zend_Config
+ */
+require_once 'Zend/Config.php';
+
+/**
  * 
  * Adapter for authenticating through Facebook Connect
  * @category Mist
