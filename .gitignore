@@ -6,3 +6,5 @@
 # Ignore other libraries and Zend base
 Ak33m/
 Zend/
+ZendX/
+Doctrine/
