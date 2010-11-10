@@ -1,27 +1,80 @@
 <?php
+/**
+ * MiST Framework. Extensions for Zend Framework (http://framework.zend.com).
+ * 
+ * LICENSE
+ * 
+ * Creative Commons Attribution-ShareAlike 3.0 Unported
+ * http://creativecommons.org/licenses/by-sa/3.0/
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE, TITLE AND NON-INFRINGEMENT. IN NO EVENT
+ * SHALL THE COPYRIGHT HOLDERS OR ANYONE DISTRIBUTING THE SOFTWARE BE LIABLE
+ * FOR ANY DAMAGES OR OTHER LIABILITY, WHETHER IN CONTRACT, TORT OR OTHERWISE,
+ * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+ * DEALINGS IN THE SOFTWARE.
+ */
 
-use Doctrine\Common\ClassLoader,
-	Doctrine\ORM\Configuration,
-    Doctrine\ORM\EntityManager,
-    Doctrine\ORM\Mapping\Driver;
-    	
+use Doctrine\Common\ClassLoader, 
+	Doctrine\ORM\Configuration, 
+	Doctrine\ORM\EntityManager, 
+	Doctrine\ORM\Mapping\Driver;
+
+/**
+ * @see Zend_Application_Resource_ResourceAbstract
+ */
+require_once 'Zend/Application/Resource/ResourceAbstract.php';
+
+/**
+ * @see Doctrine\Common\ClassLoader
+ */
 require_once 'Doctrine/Common/ClassLoader.php';
 
+/**
+ * 
+ * Resource for initializing the Facebook configuration
+ * @category Mist
+ * @package Mist_Application
+ * @subpackage Resource
+ * @author Michiel Staessen <mf@michielstaessen.be>
+ * @copyright Copyright (c) 2010 Michiel Staessen (http://www.michielstaessen.be/mf)
+ * @license http://creativecommons.org/licenses/by-sa/3.0/ Creative Commons, Share alike
+ *
+ */
 class Mist_Application_Resource_Doctrine extends Zend_Application_Resource_ResourceAbstract
 {
+	/**
+	 * Registry key for Doctrine EntityManager
+	 * 
+	 * @var string
+	 */
 	const DEFAULT_REGISTRY_KEY = 'Doctrine';
-	
+
+	/**
+	 * Doctrine EntityManager
+	 * 
+	 * @var Doctrine\ORM\EntityManager
+	 */
 	protected static $_doctrine;
-	
-	
-	/* (non-PHPdoc)
-	 * @see Zend_Application_Resource_Resource::init()
+
+	/**
+	 * 
+	 * Defined by Zend_Application_Resource_Resource
+	 * 
+	 * @return Doctrine\ORM\EntityManager
 	 */
 	public function init()
 	{
 		return $this->getDoctrine();
 	}
-	
+
+	/**
+	 * Sets up the Doctrine EntityManager if it is not set, saves it in the Registry,
+	 * and then returns it.
+	 * 
+	 * @throws Mist_Exception if certain configuration keys are missing
+	 */
 	public function getDoctrine()
 	{
 		$options = $this->getOptions();
@@ -59,8 +112,7 @@ class Mist_Application_Resource_Doctrine extends Zend_Application_Resource_Resou
 					$config->setProxyNamespace($options['config']['proxyNamespace']);
 				}
 				
-				if(isset($options['config']['mapping'])
-					&& isset($options['config']['mapping']['paths']))
+				if(isset($options['config']['mapping']) && isset($options['config']['mapping']['paths']))
 				{
 					$driver = null;
 					if($options['config']['mapping']['driver'] == 'annotation')
