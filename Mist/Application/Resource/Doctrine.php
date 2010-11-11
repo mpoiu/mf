@@ -78,14 +78,7 @@ class Mist_Application_Resource_Doctrine extends Zend_Application_Resource_Resou
 	public function getDoctrine()
 	{
 		$options = $this->getOptions();
-		
-		$classLoader = new ClassLoader('Doctrine\ORM', $options['ormPath']);
-		$classLoader->register();
-		$classLoader = new ClassLoader('Doctrine\DBAL', $options['dbalPath']);
-		$classLoader->register();
-		$classLoader = new ClassLoader('Doctrine\Common', $options['commonPath']);
-		$classLoader->register();
-		
+				
 		if(null === self::$_doctrine)
 		{
 			$config = new \Doctrine\ORM\Configuration();
