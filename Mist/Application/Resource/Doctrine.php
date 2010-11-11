@@ -27,11 +27,6 @@ use Doctrine\Common\ClassLoader,
 require_once 'Zend/Application/Resource/ResourceAbstract.php';
 
 /**
- * @see Doctrine\Common\ClassLoader
- */
-require_once 'Doctrine/Common/ClassLoader.php';
-
-/**
  * 
  * Resource for initializing the Facebook configuration
  * @category Mist
